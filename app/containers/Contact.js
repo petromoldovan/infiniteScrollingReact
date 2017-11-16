@@ -5,16 +5,16 @@ import Contact from '../components/Contact';
 
 
 function mapStateToProps(state) {
-    return {};
+	return {};
 }
 
 function mapDispatchToProps(dispatch) {
-    return {};
+	return {};
 }
 
 const ContactCont = connect(
-    mapStateToProps,
-    mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Contact);
 
 

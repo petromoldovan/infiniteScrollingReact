@@ -1,31 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import createLogger from 'redux-logger';
+import {createStore, applyMiddleware} from 'redux'
+import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk';
 import {
-    BrowserRouter as Router,
-    Route
+	BrowserRouter as Router,
+	Route
 } from 'react-router-dom'
 
 import coreReducer from './reducers';
 import App from './containers/App';
 import Contact from './containers/Contact';
+import {getInitialState} from './reducers'
 
 const loggerMiddleware = createLogger({
-    stateTransformer: state => state.toJS()
+	stateTransformer: state => state.toJS()
 });
 
-const store = compose(applyMiddleware(thunk, loggerMiddleware))(createStore)(coreReducer);
+const store = createStore(coreReducer, getInitialState(), applyMiddleware(thunk, loggerMiddleware))
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Router>
-            <div>
-                <Route exact path="/" component={App} />
-                <Route exact path="/contact" component={Contact} />
-            </div>
-        </Router>
-    </Provider>,
-    document.getElementById('app'));
+  <Provider store={store}>
+    <Router>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route exact path="/contact" component={Contact} />
+      </div>
+    </Router>
+  </Provider>,
+	document.getElementById('root'));
