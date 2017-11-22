@@ -11,7 +11,6 @@ import {
 
 import coreReducer from './reducers';
 import App from './containers/App';
-import Contact from './containers/Contact';
 import {getInitialState} from './reducers'
 
 const loggerMiddleware = createLogger({
@@ -25,7 +24,6 @@ ReactDOM.render(
     <Router>
       <div>
         <Route exact path="/" component={App} />
-        <Route exact path="/contact" component={Contact} />
       </div>
     </Router>
   </Provider>,

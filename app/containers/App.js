@@ -2,7 +2,6 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
 import {fetchStuff} from '../actions/api';
-import {testFlight} from '../actions/state';
 import App from '../components/App';
 
 
@@ -16,8 +15,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		testFlight: () => {dispatch(testFlight())},
-		fetchStuff: () => {dispatch(fetchStuff())}
+		fetchStuff: (url) => {dispatch(fetchStuff(url))}
 	};
 }
 

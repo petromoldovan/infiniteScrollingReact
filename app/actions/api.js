@@ -2,11 +2,12 @@ import axios from 'axios'
 import constants from '../constants'
 
 
-export const fetchStuff = () => dispatch => {
-	axios.get('/some/random/url')
+export const fetchStuff = (url) => dispatch => {
+	axios.get(url)
 		.then(res => {
 			dispatch({
 				type: constants.API_FETCH_SUCCESS,
+				datapoint: res.datapoint,
 				payload: res
 			})
 		})
@@ -16,6 +17,4 @@ export const fetchStuff = () => dispatch => {
 				payload: err
 			})
 		})
-
-
 }
