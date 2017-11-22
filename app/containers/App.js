@@ -6,7 +6,7 @@ import App from '../components/App';
 
 
 function mapStateToProps(state) {
-	const services = state.getIn(['data', 'services'], [])
+	const services = state.getIn(['data', 'services'], {})
 
 	return {
 		services

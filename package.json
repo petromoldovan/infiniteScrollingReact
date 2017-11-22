@@ -25,6 +25,7 @@
     "axios": "^0.17.1",
     "express": "^4.16.2",
     "immutable": "^3.8.2",
+    "json-api-normalizer": "^0.4.5",
     "lodash": "^3.10.1",
     "nodemon": "^1.12.1",
     "react": "^16.1.1",
