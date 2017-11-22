@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static('public'))
 
 //set port
-const PORT = 3000;
+const PORT = 9000;
 
 //set router
 app.get('*', function(req, res) {

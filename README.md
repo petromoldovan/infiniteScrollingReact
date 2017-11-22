@@ -6,4 +6,4 @@ npm run build
 npm run server
 ```
 
-Open in browser http://localhost:3000
+Open in browser http://localhost:9000

@@ -10,7 +10,7 @@ function coreReducer(state = getInitialState(), action) {
 
 	switch (action.type) {
 		case constants.API_FETCH_SUCCESS:
-			newState = state.setIn(["data", action.type], action.payload)
+			newState = state.setIn(['data', 'services'], action.payload)
 			break
 		default:
 			newState = state

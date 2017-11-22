@@ -6,10 +6,10 @@ import App from '../components/App';
 
 
 function mapStateToProps(state) {
-	const apiData = state.getIn(['data', 'api'], {})
+	const services = state.getIn(['data', 'services'], [])
 
 	return {
-		apiData
+		services
 	};
 }
 

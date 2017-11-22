@@ -7,8 +7,7 @@ export const fetchStuff = (url) => dispatch => {
 		.then(res => {
 			dispatch({
 				type: constants.API_FETCH_SUCCESS,
-				datapoint: res.datapoint,
-				payload: res
+				payload: res.data
 			})
 		})
 		.catch(err => {
