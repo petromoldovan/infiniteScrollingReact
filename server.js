@@ -1,6 +1,6 @@
 import 'babel-polyfill'
 import express from 'express'
-import path from 'path'
+import Html from "./app/components/common/Html";
 
 //initialize app
 const app = express();
@@ -12,11 +12,11 @@ app.use(express.static('public'))
 const PORT = 9000;
 
 //set router
-app.get('*', function(req, res) {
-	res.status(200).sendFile(path.join(__dirname, './index.html'))
+app.get('*', (req, res) => {
+	res.status(200).send(Html)
 })
 
 //listen for requests
-app.listen(PORT, function(){
+app.listen(PORT, () => {
 	console.log('Server listening on:', PORT)
 })

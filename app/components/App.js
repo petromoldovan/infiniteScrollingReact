@@ -1,30 +1,29 @@
 import React from 'react';
-import config from "../../config/config";
-import Header from "./shared/Header";
 import styled from 'styled-components'
-import Spinner from "./shared/Spinner";
+import config from '../../config/config'
+import Header from './common/Header'
+import Spinner from './common/Spinner'
 
 const Table = styled.div`
 	display: flex;
 	flex-direction: column;
-	width: calc(100%-30px);
-	padding: 0 15px;
 `
 const TableRow = styled.div`
 	flex-direction: row;
 	display: flex;
 	border: 1px solid black;
+	flex-wrap: wrap;
 `
 const TableCell = styled.div`
 	padding: 5px;
 	font-weight: ${({bold}) => bold ? 'bold' : 'normal'};
-	display: flex;
-	flex: 1;
-	justify-content: center;
+	width: 25%;
+	box-sizing: border-box;
+	text-align: center;
 `
 const BoxContainer = styled.div`
 	width: 45%;
-	max-width: 600px;
+	max-width: 800px;
 	margin: 20px;
 	padding: 10px;
 	background-color: #fff
@@ -34,8 +33,18 @@ const Root = styled.article`
 `
 const BoxHeader = styled.h3`
 	padding: 5px;
-	border-bottom: 2px solid #000
-	
+	border-bottom: 2px solid #000;
+	font-weight: 900;
+  font-size: 20px;
+`
+const BoxSubheader = styled.h6`
+	margin: 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+`
+const BoxContent = styled.div`
+	width: calc(100% - 30px);
+	padding: 0 15px;
 `
 
 class App extends React.PureComponent {
@@ -80,12 +89,17 @@ class App extends React.PureComponent {
 		return (
 			<BoxContainer>
 				<BoxHeader>
-					ActiveServices
+					Services
 				</BoxHeader>
-				<Table>
-					{this.renderTableHeader()}
-					{this.renderServices()}
-				</Table>
+				<BoxContent>
+					<BoxSubheader>
+						The table displays all services that are currently running
+					</BoxSubheader>
+					<Table>
+						{this.renderTableHeader()}
+						{this.renderServices()}
+					</Table>
+				</BoxContent>
 			</BoxContainer>
 		)
 	}
