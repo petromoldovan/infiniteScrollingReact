@@ -9,17 +9,12 @@ module.exports = {
 		path: path.resolve(__dirname, './public')
 	},
 	module: {
-		loaders: [
+		rules: [
 			{
-				exclude: /node_modules/,
+				test: /\.js$/,
 				loader: 'babel-loader',
-				query: {
-					presets: ['react', 'es2015', 'stage-0']
-				}
+				exclude: /(node_modules|server)/
 			}
 		]
-	},
-	resolve: {
-		extensions: ['.js', '.jsx']
 	}
 };

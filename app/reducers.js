@@ -1,8 +1,12 @@
 import { fromJS } from 'immutable'
 import constants from './constants'
 
-export function getInitialState() {
-	return fromJS({})
+export function getInitialState(serverState = {}) {
+	let state = fromJS({})
+	if (Object.keys(serverState).length > 0 && serverState.api) {
+		state = state.setIn(['api'], serverState.api)
+	}
+	return state
 }
 
 function coreReducer(state = getInitialState(), action) {

@@ -12,7 +12,7 @@ const NavContainer = styled.nav`
 const Header = () => {
 	return (
 		<NavContainer>
-			<h2>Agatis Web</h2>
+			<h2>Starter Kit</h2>
 		</NavContainer>
 	)
 }

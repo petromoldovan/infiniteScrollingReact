@@ -17,7 +17,14 @@ const loggerMiddleware = createLogger({
 	stateTransformer: state => state.toJS()
 });
 
-const store = createStore(coreReducer, getInitialState(), applyMiddleware(thunk, loggerMiddleware))
+//get config from server
+const config = window.INITIAL_CONFIG
+const serverState = {
+	api: config.apiEndpoint
+}
+delete window.INITIAL_CONFIG
+
+const store = createStore(coreReducer, getInitialState(serverState), applyMiddleware(thunk, loggerMiddleware))
 
 ReactDOM.render(
   <Provider store={store}>

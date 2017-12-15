@@ -1,6 +1,7 @@
 import 'babel-polyfill'
 import express from 'express'
-import Html from "./app/components/common/Html";
+import getHTML from "./app/components/common/Html";
+const config = require('config');
 
 //initialize app
 const app = express();
@@ -9,11 +10,15 @@ const app = express();
 app.use(express.static('public'))
 
 //set port
-const PORT = 9000;
+const PORT = config.port || 9001;
+
+const passConfig = {
+	apiEndpoint: config.get('apiEndpoint')
+}
 
 //set router
 app.get('*', (req, res) => {
-	res.status(200).send(Html)
+	res.status(200).send(getHTML(passConfig))
 })
 
 //listen for requests

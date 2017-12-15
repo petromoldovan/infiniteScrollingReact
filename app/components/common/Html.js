@@ -1,9 +1,9 @@
-const Html = `
+export default (config) => `
 <!DOCTYPE html>
 <html lang = "en">
 <head>
 <meta charset = "UTF-8">
-<title>Agatis Web</title>
+<title>Starter Kit</title>
 <style>
   html,
   body,
@@ -15,8 +15,7 @@ const Html = `
 </head>
 <body>
   <div id="root"></div>
+  <script>window.INITIAL_CONFIG = ${JSON.stringify(config)};</script>
   <script src="./bundle.js"></script>
 </body>
 </html>`
-
-export default Html

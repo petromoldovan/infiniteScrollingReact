@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components'
-import config from '../../config/config'
 import Header from './common/Header'
 import Spinner from './common/Spinner'
 
@@ -51,7 +50,7 @@ class App extends React.PureComponent {
 	componentDidMount() {
 		const {fetchStuff} = this.props
 
-		if (fetchStuff && fetchStuff instanceof Function) fetchStuff(config.agatisUrl)
+		if (fetchStuff && fetchStuff instanceof Function) fetchStuff("http://pass/url/here")
 	}
 
 	renderTableHeader = () => {
