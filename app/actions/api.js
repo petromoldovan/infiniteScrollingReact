@@ -1,5 +1,5 @@
 import axios from 'axios'
-import normalize from 'json-api-normalizer';
+import normalize from 'json-api-normalizer'
 
 import constants from '../constants'
 

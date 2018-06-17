@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import {createStore, applyMiddleware} from 'redux'
-import { createLogger } from 'redux-logger'
-import thunk from 'redux-thunk';
+import thunk from 'redux-thunk'
 import {
 	BrowserRouter as Router,
 	Route
@@ -13,10 +12,6 @@ import coreReducer from './reducers';
 import App from './containers/App';
 import {getInitialState} from './reducers'
 
-const loggerMiddleware = createLogger({
-	stateTransformer: state => state.toJS()
-});
-
 //get config from server
 const config = window.INITIAL_CONFIG
 const serverState = {
@@ -24,7 +19,7 @@ const serverState = {
 }
 delete window.INITIAL_CONFIG
 
-const store = createStore(coreReducer, getInitialState(serverState), applyMiddleware(thunk, loggerMiddleware))
+const store = createStore(coreReducer, getInitialState(serverState), applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
