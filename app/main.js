@@ -7,7 +7,6 @@ import {
 	BrowserRouter as Router,
 	Route
 } from 'react-router-dom'
-
 import coreReducer from './reducers';
 import App from './containers/App';
 import {getInitialState} from './reducers'
