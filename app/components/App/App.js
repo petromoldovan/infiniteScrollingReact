@@ -38,12 +38,12 @@ const BoxHeader = styled.h3`
   font-size: 20px;
 `
 
-const RowComponent = (item) => (
-  <TableRow key={item.id}>
-    <TableCell>{1}</TableCell>
-    <TableCell>{item.id}</TableCell>
-    <TableCell>{item.title}</TableCell>
-    <TableCell>{item.status}</TableCell>
+const RowComponent = (props) => (
+  <TableRow key={props.id}>
+    <TableCell>{props.IDX + 1}</TableCell>
+    <TableCell>{props.id}</TableCell>
+    <TableCell>{props.title}</TableCell>
+    <TableCell>{props.status}</TableCell>
   </TableRow>
 )
 

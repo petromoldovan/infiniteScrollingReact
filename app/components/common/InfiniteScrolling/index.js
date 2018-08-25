@@ -1,5 +1,6 @@
 import {compose, withPropsOnChange, withState, withHandlers} from 'recompose'
 import InfiniteScrolling from './InfiniteScrolling'
+import throttle from 'lodash/throttle'
 
 const defaultMaxItems = 30
 
@@ -22,6 +23,7 @@ const makeWithPropsOnChange = withPropsOnChange(
     console.log('renderedItems LENGTH', renderedItems.length)
 
     return {
+      items,
       currentItemsIDX,
       RowComponent: rowComponent,
       renderedItems,
@@ -31,29 +33,30 @@ const makeWithPropsOnChange = withPropsOnChange(
 )
 
 const makeWithHandlers = withHandlers({
-  onScroll: ({currentItemsIDX, setCurrentItemsIDX, listHeight, itemHeight}) => e => {
+  onScroll: ({currentItemsIDX, items, setCurrentItemsIDX, listHeight, itemHeight}) => throttle(e => {
     console.log("+++++++++++++++++++")
-    let scrollPercentage = Math.floor(e.target.scrollTop / listHeight * 100)
-    let itemsPerView = Math.floor(itemHeight / listHeight)
-
-    console.log('e.target.scrollTop', e.target.scrollTop)
-    console.log('scrollPercentage', scrollPercentage)
+    // TODO: how to update currentItemsIDX only when needed?
+    //let totalListHeight = itemHeight * defaultMaxItems
+    //let scrollPercentage = Math.floor(e.target.scrollTop / (totalListHeight - listHeight) * 100)
+    //let itemsPerView = Math.floor(listHeight / itemHeight)
 
     // scroll in the beginning
-    if (scrollPercentage >= 33 && scrollPercentage < 66 && currentItemsIDX.first === 0) {
+    /*if (scrollPercentage >= 33 && scrollPercentage < 66) {
       console.log('case1')
-      console.log('itemsPerView', itemsPerView)
-      console.log('NEW FIRST', currentItemsIDX.first + itemsPerView)
       setCurrentItemsIDX({first: currentItemsIDX.first + itemsPerView, last: currentItemsIDX.last + itemsPerView})
     } else if (scrollPercentage < 33 && currentItemsIDX.first !== 0) {
       console.log('case2')
       setCurrentItemsIDX({first: 0, last: currentItemsIDX.last - itemsPerView})
     } else if (scrollPercentage >= 66) {
       console.log('case3')
-      console.log('end scrollPercentage')
       setCurrentItemsIDX({first: currentItemsIDX.first + itemsPerView, last: currentItemsIDX.last + itemsPerView})
+    }*/
+
+    let itemsLeftOnTopOfVieport = e.target.scrollTop / itemHeight
+    if (itemsLeftOnTopOfVieport >= 10) {
+
     }
-  },
+  }, 500),
 })
 
 export default compose(
