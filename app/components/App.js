@@ -50,7 +50,7 @@ class App extends React.PureComponent {
 	componentDidMount() {
 		const {fetchStuff} = this.props
 
-		if (fetchStuff && fetchStuff instanceof Function) fetchStuff("http://pass/url/here")
+		if (fetchStuff && fetchStuff instanceof Function) fetchStuff("http://localhost:3000/services")
 	}
 
 	renderTableHeader = () => {
@@ -66,23 +66,29 @@ class App extends React.PureComponent {
 
 	renderServices = () => {
 		const {services} = this.props
-		if (Object.keys(services).length === 0)
+
+    if (!services) {
+		  return null
+    }
+
+		if (services.length === 0)
 			return null
 
-		return Object.keys(services.service).map((ser, IDX) => {
+
+		return services.map((ser, IDX) => {
 			return (
-				<TableRow key={services.service[ser].id}>
+				<TableRow key={ser.id + IDX + 1}>
 					<TableCell>{IDX + 1}</TableCell>
-					<TableCell>{services.service[ser].id}</TableCell>
-					<TableCell>{services.service[ser].attributes.serviceCode}</TableCell>
-					<TableCell>{services.service[ser].attributes.upstreamUrl}</TableCell>
+					<TableCell>{ser.id}</TableCell>
+					<TableCell>{ser.title}</TableCell>
+					<TableCell>{ser.status}</TableCell>
 				</TableRow>
 			)
 		})
 	}
 
 	renderStatusBox = () => {
-		if (Object.keys(this.props.services).length === 0)
+		if (this.props.services.length === 0)
 			return <Spinner />
 
 		return (
