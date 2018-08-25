@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components'
-import Header from './common/Header'
-import Spinner from './common/Spinner'
+import Header from '../common/Header'
+import Spinner from '../common/Spinner'
+import InfiniteScrolling from '../common/InfiniteScrolling'
 
 const Table = styled.div`
 	display: flex;
@@ -36,15 +37,19 @@ const BoxHeader = styled.h3`
 	font-weight: 900;
   font-size: 20px;
 `
-const BoxSubheader = styled.h6`
-	margin: 10px 0;
-  font-size: 14px;
-  font-weight: 700;
-`
 const BoxContent = styled.div`
 	width: calc(100% - 30px);
 	padding: 0 15px;
 `
+
+const RowComponent = (item) => (
+  <TableRow key={item.id}>
+    <TableCell>{1}</TableCell>
+    <TableCell>{item.id}</TableCell>
+    <TableCell>{item.title}</TableCell>
+    <TableCell>{item.status}</TableCell>
+  </TableRow>
+)
 
 class App extends React.PureComponent {
 	componentDidMount() {
@@ -97,13 +102,10 @@ class App extends React.PureComponent {
 					Services
 				</BoxHeader>
 				<BoxContent>
-					<BoxSubheader>
-						The table displays all services that are currently running
-					</BoxSubheader>
-					<Table>
-						{this.renderTableHeader()}
-						{this.renderServices()}
-					</Table>
+				<InfiniteScrolling
+					items={this.props.services}
+					RowComponent={RowComponent}
+				/>
 				</BoxContent>
 			</BoxContainer>
 		)

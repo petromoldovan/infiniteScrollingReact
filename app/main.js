@@ -8,7 +8,7 @@ import {
 	Route
 } from 'react-router-dom'
 import coreReducer from './reducers';
-import App from './containers/App';
+import App from './components/App';
 import {getInitialState} from './reducers'
 
 //get config from server

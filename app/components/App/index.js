@@ -1,9 +1,8 @@
 import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom'
 
-import {fetchStuff} from '../actions/api';
-import App from '../components/App';
-
+import {fetchStuff} from '../../actions/api';
+import App from './App';
 
 function mapStateToProps(state) {
 	const services = state.getIn(['data', 'services'], [])
