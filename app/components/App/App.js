@@ -37,10 +37,6 @@ const BoxHeader = styled.h3`
 	font-weight: 900;
   font-size: 20px;
 `
-const BoxContent = styled.div`
-	width: calc(100% - 30px);
-	padding: 0 15px;
-`
 
 const RowComponent = (item) => (
   <TableRow key={item.id}>
@@ -69,29 +65,6 @@ class App extends React.PureComponent {
 		)
 	}
 
-	renderServices = () => {
-		const {services} = this.props
-
-    if (!services) {
-		  return null
-    }
-
-		if (services.length === 0)
-			return null
-
-
-		return services.map((ser, IDX) => {
-			return (
-				<TableRow key={ser.id + IDX + 1}>
-					<TableCell>{IDX + 1}</TableCell>
-					<TableCell>{ser.id}</TableCell>
-					<TableCell>{ser.title}</TableCell>
-					<TableCell>{ser.status}</TableCell>
-				</TableRow>
-			)
-		})
-	}
-
 	renderStatusBox = () => {
 		if (this.props.services.length === 0)
 			return <Spinner />
@@ -101,12 +74,12 @@ class App extends React.PureComponent {
 				<BoxHeader>
 					Services
 				</BoxHeader>
-				<BoxContent>
 				<InfiniteScrolling
 					items={this.props.services}
-					RowComponent={RowComponent}
+          rowComponent={RowComponent}
+          listHeight={310}
+					itemHeight={31}
 				/>
-				</BoxContent>
 			</BoxContainer>
 		)
 	}
