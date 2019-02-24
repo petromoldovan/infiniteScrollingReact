@@ -1,8 +1,8 @@
-import {compose, withPropsOnChange, withState, withHandlers} from 'recompose'
 import InfiniteScrolling from './InfiniteScrolling'
-import throttle from 'lodash/throttle'
 
-const defaultMaxItems = 30
+export default InfiniteScrolling
+
+/*const defaultMaxItems = 30
 
 const makeWithState = [
   withState('currentItemsIDX', 'setCurrentItemsIDX', {first: 0, last: defaultMaxItems})
@@ -10,7 +10,7 @@ const makeWithState = [
 
 const makeWithPropsOnChange = withPropsOnChange(
   ['items', 'currentItemsIDX'],
-  ({items = [], rowComponent, currentItemsIDX = {}, ...props}) => {
+  ({items = [], currentItemsIDX = {}}) => {
     console.log("==================UPDATES")
     console.log('new currentItemsIDX', currentItemsIDX)
     let renderedItems = []
@@ -25,9 +25,7 @@ const makeWithPropsOnChange = withPropsOnChange(
     return {
       items,
       currentItemsIDX,
-      RowComponent: rowComponent,
       renderedItems,
-      ...props
     }
   }
 )
@@ -41,7 +39,7 @@ const makeWithHandlers = withHandlers({
     //let itemsPerView = Math.floor(listHeight / itemHeight)
 
     // scroll in the beginning
-    /*if (scrollPercentage >= 33 && scrollPercentage < 66) {
+    if (scrollPercentage >= 33 && scrollPercentage < 66) {
       console.log('case1')
       setCurrentItemsIDX({first: currentItemsIDX.first + itemsPerView, last: currentItemsIDX.last + itemsPerView})
     } else if (scrollPercentage < 33 && currentItemsIDX.first !== 0) {
@@ -50,7 +48,7 @@ const makeWithHandlers = withHandlers({
     } else if (scrollPercentage >= 66) {
       console.log('case3')
       setCurrentItemsIDX({first: currentItemsIDX.first + itemsPerView, last: currentItemsIDX.last + itemsPerView})
-    }*/
+    }
 
     let itemsLeftOnTopOfVieport = e.target.scrollTop / itemHeight
     if (itemsLeftOnTopOfVieport >= 10) {
@@ -64,3 +62,4 @@ export default compose(
   makeWithPropsOnChange,
   makeWithHandlers
 )(InfiniteScrolling)
+*/
