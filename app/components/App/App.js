@@ -4,10 +4,6 @@ import Header from '../common/Header'
 import Spinner from '../common/Spinner'
 import InfiniteScrolling from '../common/InfiniteScrolling'
 
-const Table = styled.div`
-	display: flex;
-	flex-direction: column;
-`
 const TableRow = styled.div`
 	flex-direction: row;
 	display: flex;
@@ -26,7 +22,8 @@ const BoxContainer = styled.div`
 	max-width: 800px;
 	margin: 20px;
 	padding: 10px;
-	background-color: #fff
+	background-color: #fff;
+	height: 300px;
 `
 const Root = styled.article`
 	height: 100%;
@@ -40,10 +37,8 @@ const BoxHeader = styled.h3`
 
 const RowComponent = (props) => (
   <TableRow key={props.id}>
-    <TableCell>{props.IDX + 1}</TableCell>
     <TableCell>{props.id}</TableCell>
     <TableCell>{props.title}</TableCell>
-    <TableCell>{props.status}</TableCell>
   </TableRow>
 )
 
@@ -76,9 +71,9 @@ class App extends React.PureComponent {
 				</BoxHeader>
 				<InfiniteScrolling
 					items={this.props.services}
-          rowComponent={RowComponent}
-          listHeight={310}
-					itemHeight={31}
+					RowComponent={RowComponent}
+					listHeight={310}
+					itemHeight={30}
 				/>
 			</BoxContainer>
 		)
