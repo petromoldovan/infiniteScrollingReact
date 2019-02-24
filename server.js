@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import express from 'express'
 import getHTML from "./app/components/common/Html";
 const config = require('config');
